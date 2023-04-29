@@ -21,6 +21,13 @@ Route::get('/mesa', [ControllerMesa::class, 'index'] );
 Route::post('/mesa', [ControllerMesa::class, 'store'] );
 Route::put('/mesa/{id}', [ControllerMesa::class, 'update'] );
 Route::delete('/mesa/{id}', [ControllerMesa::class, 'destroy'] );
+//rota de add item no pivo item_mesa
+Route::post('/mesa/{id}', [ControllerMesa::class, 'postItem'] );
+//
+
+//rota de exclui item do pivo item_mesa
+Route::delete('/mesa/{id}', [ControllerMesa::class, 'destroyItem'] );
+//
 
 Route::get('/item/{id}', [ControllerItem::class, 'show'] );
 Route::get('/item', [ControllerItem::class, 'index'] );

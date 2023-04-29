@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Item;
 use App\Models\Mesa;
 use Illuminate\Http\Request;
 
@@ -82,5 +83,29 @@ class ControllerMesa extends Controller
         return response()->json([
             'erro'=>'error'
         ], 401);
+    }
+
+    //funcao q adiocina item na tabela pivo mesa_item
+    public function postItem($id){
+        $idMesa = Mesa::find($id);
+        $add = $idMesa->item()->attach(3);
+       if($add === true){
+        return response()->json([
+            'mensagem'=>'item adicionado a mesa'
+        ], 200);
+       }
+
+    }
+
+    //funcao q exclui item na tabela pivo mesa_item
+    public function destroyItem($id){
+        $idMesa = Mesa::find($id);
+        $del = $idMesa->item()->detach(3);
+       if($del === true){
+        return response()->json([
+            'mensagem'=>'item adicionado a mesa'
+        ], 200);
+       }
+
     }
 }
